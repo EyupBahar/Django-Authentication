@@ -174,6 +174,7 @@ python manage.py startapp home
 - Go to settings.py and add the app to the INSTALLED_APPS:
 ```py
 'user_example'
+'user_example.apps.UserExampleConfig'
 ```
 
 # Login Admin Site
@@ -592,6 +593,7 @@ Add settings.py
 
 LOGOUT_REDIRECT_URL = '/'
 
+
 ### Links to official documentation
 
 https://docs.djangoproject.com/en/3.2/topics/auth/default/
@@ -601,30 +603,3 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 https://django-allauth.readthedocs.io/en/latest/overview.html
 
 https://docs.djangoproject.com/en/3.2/topics/auth/customizing/
-
-
-
-### 
-path('login/, auth_views.LoginView.as_view(), name='login')
-                                           template_name="registration/login.html"
-
-from django.contrib.auth.decorators import login_required
-
-
-
-{% extends 'base.html' %}
-
-{% block title %}Forgot Your Password?{% endblock %}
-
-{% block content %}
-  <h1>Forgot your password?</h1>
-  <p>Enter your email address below, and we'll email instructions for setting a new one.</p>
-
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Send me instructions!">
-  </form>
-{% endblock %}
-
-
